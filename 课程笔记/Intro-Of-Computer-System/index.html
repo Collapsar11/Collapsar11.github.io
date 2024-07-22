@@ -1,0 +1,3870 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Computer-System-II/OS-synchronization/">
+      
+      
+        <link rel="next" href="../physics/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+    
+    
+      
+        <title>计算机系统概论 - slx's notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../CSS/admonition.css">
+    
+      <link rel="stylesheet" href="../../CSS/other.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-computing-systems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="slx&#39;s notebook" class="md-header__button md-logo" aria-label="slx's notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            slx's notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              计算机系统概论
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Collapsar11?tab=repositories" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Collapsar11's github
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="slx&#39;s notebook" class="md-nav__button md-logo" aria-label="slx's notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    slx's notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Collapsar11?tab=repositories" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Collapsar11's github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    课程笔记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    面向对象程序
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            面向对象程序
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oop/Oop-%E4%B9%A0%E9%A2%98%E6%95%B4%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oop/Oop-pta-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oop/Oop-pta-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oop/Oop-pta-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oop/Oop-pta-5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oop/Oop-pta-6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统二
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统二
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Computer-System-II/Operating-System/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Computer-System-II/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operating System Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Computer-System-II/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operating System Structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Computer-System-II/OS-%E8%BF%9B%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Computer-System-II/OS-%E7%BA%BF%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thread
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Computer-System-II/OS-cpu%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CPU Scheduler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Computer-System-II/OS-synchronization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Synchronization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    计算机系统概论
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    计算机系统概论
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#digital-logic-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Digital Logic Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Digital Logic Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combinational-logic-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combinational Logic Circuits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combinational Logic Circuits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decoder-n-2n" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decoder (n-2^n)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mux-n-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mux (n-1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-bit-adder-fa" class="md-nav__link">
+    <span class="md-ellipsis">
+      One-Bit Adder (FA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-programmable-logic-array-pla" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Programmable Logic Array (PLA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-completeness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Completeness
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-storage-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Storage Elements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Storage Elements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-r-s-latch" class="md-nav__link">
+    <span class="md-ellipsis">
+      The R-S Latch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-gated-d-latch" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Gated D Latch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-concept-of-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Concept of Memory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Concept of Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#address-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Address Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addressability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addressability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequential-logic-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sequential Logic Circuits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sequential Logic Circuits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-concept-of-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Concept of State
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fsm-and-its-state-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      The FSM and its State Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-synchronous-finite-state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Synchronous Finite State Machine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-problem-with-gated-latches-as-storage-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Problem with Gated Latches as Storage Elements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-flip-flop" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Flip-Flop
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-von-neumann-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      The von Neumann Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The von Neumann Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing Unit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-and-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input and Output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Unit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-lc-3-an-example-von-neumann-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      The LC-3: An Example von Neumann Machine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instruction Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Instruction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-instruction-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Instruction Cycle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Instruction Cycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      FETCH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decode" class="md-nav__link">
+    <span class="md-ellipsis">
+      DECODE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluate-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      EVALUATE ADDRESS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetch-operands" class="md-nav__link">
+    <span class="md-ellipsis">
+      FETCH OPERANDS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      EXECUTE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#store-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      STORE RESULT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-sequence-of-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the Sequence of Execution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-of-the-instruction-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control of the Instruction Cycle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#halting-the-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Halting the Computer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-lc-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      The LC-3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The LC-3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-isa-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      The ISA: Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The ISA: Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Organization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-instruction-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Instruction Set
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Instruction Set">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opcodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addressing-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addressing Modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional Codes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operating-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operating Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-lea-instruction-load-effective-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      The LEA Instruction (Load Effective Address)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-movement-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Movement Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Movement Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pc-relative-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      PC-Relative Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indirect-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indirect Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-offset-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base + offset Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional Branches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-jmp-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      The JMP Instruction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-trap-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      The TRAP Instruction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-components-of-the-data-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Components of the Data Path
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Components of the Data Path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-global-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Global Bus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Global Bus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-alu-and-the-register-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      The ALU and the Register File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-pc-and-the-pcmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      The PC and the PCMUX
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-marmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      The MARMUX
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-instruction-cycle-specified-to-the-lc-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Instruction Cycle Specified to the LC-3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assembly-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assembly Language
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Assembly Language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beyond-the-assembly-of-a-single-assembly-language-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond the Assembly of a Single Assembly Language Program
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beyond the Assembly of a Single Assembly Language Program">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-executable-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Executable Image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-than-one-object-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      More than One Object File
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Structures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subroutines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subroutines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subroutines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-callreturn-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Call/Return Mechanism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsrr-the-instruction-that-calls-the-subroutine" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSR(R) —— The Instruction That Calls the Subroutine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#saving-and-storing-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      Saving and Storing Register
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library-routines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Library Routines
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Stack
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-stack-an-abstract-data-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Stack —— An Abstract Data Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-in-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation in Memory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation in Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-stack-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      The stack protocol
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Queue
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Queue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-basic-operations-remove-from-front-insert-at-rear" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Basic Operations: Remove from Front, Insert at Rear
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrap-around" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrap-Around
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-many-elements-can-we-store-in-a-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Many Elements Can We Store in a Queue?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-for-underflow-overflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test for Underflow, Overflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-complete-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete Story
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Character Strings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    <span class="md-ellipsis">
+      I/O
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privilege-priority-and-the-memory-address-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege, Priority, and the Memory Address Space
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privilege, Priority, and the Memory Address Space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privilege-and-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege and Priority
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privilege and Priority">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privilege" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Priority
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-orthogonal-notions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Orthogonal Notions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-processor-statue-register-psr" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Processor Statue Register (PSR)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#organization-of-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organization of Memory
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputoutput" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input/Output
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input/Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-mapped-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory-Mapped I/O
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-vs-synchronous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous vs. Synchronous
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interrupt-driven-vs-polling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupt-Driven vs. Polling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-from-the-keyboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input from the Keyboard
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input from the Keyboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-input-register-kbdr-and-kbsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Input Register (KBDR and KBSR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-basic-input-service-routine" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Basic Input Service Routine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-of-memory-mapped-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation of Memory-Mapped Input
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-to-the-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output to the Monitor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output to the Monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-output-registers-ddr-and-dsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Output Registers (DDR and DSR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-basic-output-service-routine" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Basic Output Service Routine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-implementation-of-memory-mapped-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Implementation of Memory-Mapped Output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../physics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大学物理乙II
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据建模与分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            数据建模与分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E5%8F%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E6%84%9F%E7%9F%A5%E6%9C%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    感知机
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/k%E8%BF%91%E9%82%BB%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K近邻法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    朴素贝叶斯法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#digital-logic-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Digital Logic Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Digital Logic Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combinational-logic-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combinational Logic Circuits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combinational Logic Circuits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decoder-n-2n" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decoder (n-2^n)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mux-n-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mux (n-1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-bit-adder-fa" class="md-nav__link">
+    <span class="md-ellipsis">
+      One-Bit Adder (FA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-programmable-logic-array-pla" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Programmable Logic Array (PLA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-completeness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Completeness
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-storage-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Storage Elements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Storage Elements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-r-s-latch" class="md-nav__link">
+    <span class="md-ellipsis">
+      The R-S Latch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-gated-d-latch" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Gated D Latch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-concept-of-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Concept of Memory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Concept of Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#address-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Address Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addressability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addressability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequential-logic-circuits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sequential Logic Circuits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sequential Logic Circuits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-concept-of-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Concept of State
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fsm-and-its-state-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      The FSM and its State Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-synchronous-finite-state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Synchronous Finite State Machine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-problem-with-gated-latches-as-storage-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Problem with Gated Latches as Storage Elements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-flip-flop" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Flip-Flop
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-von-neumann-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      The von Neumann Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The von Neumann Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing Unit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-and-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input and Output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Unit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-lc-3-an-example-von-neumann-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      The LC-3: An Example von Neumann Machine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instruction Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Instruction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-instruction-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Instruction Cycle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Instruction Cycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      FETCH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decode" class="md-nav__link">
+    <span class="md-ellipsis">
+      DECODE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluate-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      EVALUATE ADDRESS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetch-operands" class="md-nav__link">
+    <span class="md-ellipsis">
+      FETCH OPERANDS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      EXECUTE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#store-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      STORE RESULT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-sequence-of-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the Sequence of Execution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-of-the-instruction-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control of the Instruction Cycle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#halting-the-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Halting the Computer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-lc-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      The LC-3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The LC-3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-isa-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      The ISA: Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The ISA: Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Organization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-instruction-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Instruction Set
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Instruction Set">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opcodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addressing-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addressing Modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional Codes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operating-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operating Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-lea-instruction-load-effective-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      The LEA Instruction (Load Effective Address)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-movement-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Movement Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Movement Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pc-relative-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      PC-Relative Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indirect-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indirect Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-offset-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base + offset Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional Branches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-jmp-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      The JMP Instruction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-trap-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      The TRAP Instruction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-components-of-the-data-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Components of the Data Path
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Components of the Data Path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-global-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Global Bus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Global Bus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-alu-and-the-register-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      The ALU and the Register File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-pc-and-the-pcmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      The PC and the PCMUX
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-marmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      The MARMUX
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-instruction-cycle-specified-to-the-lc-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Instruction Cycle Specified to the LC-3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assembly-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assembly Language
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Assembly Language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beyond-the-assembly-of-a-single-assembly-language-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond the Assembly of a Single Assembly Language Program
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beyond the Assembly of a Single Assembly Language Program">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-executable-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Executable Image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-than-one-object-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      More than One Object File
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Structures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subroutines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subroutines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subroutines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-callreturn-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Call/Return Mechanism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsrr-the-instruction-that-calls-the-subroutine" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSR(R) —— The Instruction That Calls the Subroutine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#saving-and-storing-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      Saving and Storing Register
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library-routines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Library Routines
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Stack
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-stack-an-abstract-data-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Stack —— An Abstract Data Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-in-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation in Memory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation in Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-stack-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      The stack protocol
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Queue
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Queue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-basic-operations-remove-from-front-insert-at-rear" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Basic Operations: Remove from Front, Insert at Rear
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrap-around" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrap-Around
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-many-elements-can-we-store-in-a-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Many Elements Can We Store in a Queue?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-for-underflow-overflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test for Underflow, Overflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-complete-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete Story
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Character Strings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    <span class="md-ellipsis">
+      I/O
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privilege-priority-and-the-memory-address-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege, Priority, and the Memory Address Space
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privilege, Priority, and the Memory Address Space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privilege-and-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege and Priority
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privilege and Priority">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privilege" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privilege
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Priority
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-orthogonal-notions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Orthogonal Notions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-processor-statue-register-psr" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Processor Statue Register (PSR)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#organization-of-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organization of Memory
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputoutput" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input/Output
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input/Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-mapped-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory-Mapped I/O
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous-vs-synchronous" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous vs. Synchronous
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interrupt-driven-vs-polling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupt-Driven vs. Polling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-from-the-keyboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input from the Keyboard
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input from the Keyboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-input-register-kbdr-and-kbsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Input Register (KBDR and KBSR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-basic-input-service-routine" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Basic Input Service Routine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-of-memory-mapped-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation of Memory-Mapped Input
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-to-the-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output to the Monitor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output to the Monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-output-registers-ddr-and-dsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Output Registers (DDR and DSR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-basic-output-service-routine" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Basic Output Service Routine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-implementation-of-memory-mapped-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Implementation of Memory-Mapped Output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="introduction-to-computing-systems">Introduction to Computing Systems</h1>
+<h2 id="digital-logic-structure">Digital Logic Structure</h2>
+<h3 id="combinational-logic-circuits">Combinational Logic Circuits</h3>
+<p>These structures do not store information, and they are sometimes referred to as decision elements.</p>
+<p>Their outputs are not at all dependent on the past history of information that is stored internally, since no information can be stored internally in a combinational logic circuit.</p>
+<p>Three useful circuits: <code>a decoder</code>, <code>a mux</code>, <code>a one-bit adder</code>.</p>
+<h4 id="decoder-n-2n">Decoder (n-2^n)</h4>
+<p>A decoder has the property that exactly one of its outputs is 1 and all the rest are 0s. In general, decoders have n inputs and 2^n outputs.</p>
+<p>One implementation: when interpret the opcode, A 4-to-16 decoder is used to identify what work is to be performed by each instruction.</p>
+<h4 id="mux-n-1">Mux (n-1)</h4>
+<p>The function of a mux is to select one of the inputs and connect it to the output. The select signal determines which inputs is connected to the output.</p>
+<p>In general, a mux consists of 2^n inputs and n select lines.</p>
+<h4 id="one-bit-adder-fa">One-Bit Adder (FA)</h4>
+<p><span class="arithmatex">\(Si = Ai \oplus Bi \oplus Ci\)</span></p>
+<p><span class="arithmatex">\(C_{i+1} =  A_i B_i + B_iC_i + A_iC_i\)</span></p>
+<p>The difference between a <em>full adder</em> and a <em>half adder</em> is the carry bit. The half adder depends on only two inputs, while the full adder depends on three inputs.</p>
+<h4 id="the-programmable-logic-array-pla">The Programmable Logic Array (PLA)</h4>
+<p>It is a very common building block for implementing any collection of logic functions one wishes to implement. It consists of an array of an AND array followed by an OR array.</p>
+<p>For n-inputs logic functions, we need a PLA with 2^n n-input AND gates. The number of OR gates corresponds to the number of logic functions we wish to implement.</p>
+<h4 id="logical-completeness">Logical Completeness</h4>
+<p>If we say a set of gates, for example, {AND, OR, NOT}, is logically complete, then we can build a circuit to carry out the specification of any truth table we wish without using any other kind of gate.</p>
+<h3 id="basic-storage-elements">Basic Storage Elements</h3>
+<p>Now we are ready to discuss logic structures that do include the storage of information.</p>
+<h4 id="the-r-s-latch">The R-S Latch</h4>
+<p><strong><em>The Quiescent State</em></strong>: when the latch is storing a value, either 0 or 1, and noting is trying to change the value.</p>
+<p>This is the case when inputs S and R both have the logic value 1. But it is illegal to set both S and R to 0.</p>
+<p>We use the term <em>set</em> to denote setting a variable to 0 or 1, and the term <em>clear</em> to denote the act of setting a variable to 0.</p>
+<h4 id="the-gated-d-latch">The Gated D Latch</h4>
+<p>It consists of the R-S latch, plus two additional NAND gates that allow the latch to be set to the value of D, but only when WE is asserted.</p>
+<h3 id="the-concept-of-memory">The Concept of Memory</h3>
+<p>Memory is made up of a number of locations, each uniquely identifiable and each having the ability to store a value.</p>
+<p><em>Address</em>: the unique identifier associated with each memory location.</p>
+<p><em>Address Space</em>: the total number of uniquely identifiable locations.</p>
+<p><em>Addressability</em>: the number of bits of information stored in each location.</p>
+<h4 id="address-space">Address Space</h4>
+<p>With n bits of address, we can uniquely identify 2^n memory locations.</p>
+<h4 id="addressability">Addressability</h4>
+<p>Most memorise are byte-addressable. If the memory is byte-addressable, then each ASCII character occupies one location in memory. Uniquely identifying each byte of memory allows individual bytes of stored information to be changed easily.</p>
+<p>Many computers that have been designed specifically to perform large scientific calculations are 64-bit addressable. That is due to the fact that numbers used in scientific calculations are often represented as 64-bit floating-point quantities.</p>
+<h3 id="sequential-logic-circuits">Sequential Logic Circuits</h3>
+<p>In this section, we discuss digital logic structures that can both process information and store information. That is, these structures base their decisions not only on the input values now present, but also on what has happened before. The output can be dependent on both the inputs now and the values stored in the storage elements.</p>
+<p>Sequential logic circuits are used to implement a very important class of mechanisms called finite state machines.</p>
+<h4 id="the-concept-of-state">The Concept of State</h4>
+<p>The state of a system is a snapshot of <code>&lt;span alt="solid"&gt;</code>all the relevant elements of the system at the moment the snapshot is taken.</p>
+<h4 id="the-fsm-and-its-state-diagram">The FSM and its State Diagram</h4>
+<p>A FSM consists of five elements:</p>
+<ol>
+<li>a finite number of states</li>
+<li>a finite number of external inputs</li>
+<li>a finite number of external outputs</li>
+<li>an explicit specification of all state transitions</li>
+<li>an explicit specification of what determines each external output value</li>
+</ol>
+<p>We refer to the state the system is coming from as the current state, and the state it is going to as the next state.</p>
+<p>The output of Mealy type sequential logic circuit depends on both the current state and the value of the external input, while Moore type depends on only the current state.</p>
+<h4 id="the-synchronous-finite-state-machine">The Synchronous Finite State Machine</h4>
+<p>Most computers are synchronous because the state transitions take place, one after the other, at identical fixed units of time. The are controlled by a synchronous FSM.</p>
+<h4 id="a-problem-with-gated-latches-as-storage-elements">A Problem with Gated Latches as Storage Elements</h4>
+<p>A gated D latch changes immediately in response to its input if the WE signal is asserted, so it cannot the storage element for our synchronous FSM. (Because we have no idea what the state of the FSM would be for next clock cycle and even in the current clock cycle, the state of the storage elements would change.)</p>
+<p>We need storage elements that allow us to read the current state throughout the current clock cycle, and not write the next state values into the storage elements until the beginning of the next clock cycle.</p>
+<h4 id="the-flip-flop">The Flip-Flop</h4>
+<p>Our requirement is, the function to be performed during a single clock cycle involves reading and writing a particular variable. Reading must be allowed throughout the clock cycle, and writing must occur at the end of the clock cycle.</p>
+<p>A flip-flop can accomplished that. The master/slave flip-flop can be constructed out of two gated D latches. And the WE of the master is 1 when the clock is 0, and the WE of the slave is 1 when the clock is 1. (<strong>clk posedge</strong>)</p>
+<p>$
+t_{clk} &gt; t_{ffpd} + t_{nspd} + t_{setup}
+$</p>
+<p>At the start of each clock cycle, the output is the output of the slave latch. After the propagation delay of the combinational logic, the next state is produced but cannot be written into the master latch, since the WE to the master latch is 0.</p>
+<p>At the start of the second half cycle, the clock signal is 0, which means the WE of the master latch is 1, and the master latch can be written. However, during this half cycle, the WE of the slave latch is 0, so the slave latch cannot write the new information now stored in the master latch.</p>
+<p>At the start of the next clock cycle, the WE to the slave latch is 1, so the slave latch can store the next state value was created by the combinational logic during the last clock cycle.</p>
+<p>Since the WE of the master latch is 0 now, the state of the master latch cannot change. Although the WE of the slave latch is 1, the latch do not change because the master latch cannot change.</p>
+<p>The slave's output changes at the start of the clock cycle, and does not change again during the clock cycle.</p>
+<p>Now we conclude the <strong><em>reason</em></strong>: During the half-cycle A, the master latch cannot change, so the slave latch continue to see the state information that is the current state for the new clock cycle. During the half-cycle B, the slave latch cannot change because its WE is 0. Meanwhile, during the half-cycle B, the master latch can store the next state information produced by the combinational logic, but it cannot write it into the slave latch until the start of the next clock cycle, when it becomes the state information of the next state.</p>
+<h2 id="the-von-neumann-model">The von Neumann Model</h2>
+<h3 id="basic-components">Basic Components</h3>
+<p><strong>instruction</strong>: the smallest piece of work specified in a computer program.</p>
+<p>The von Neumann Model consists of five parts: <code>memory</code>, <code>a processing unit</code>, <code>input</code>, <code>output</code>, and <code>a control unit</code>.</p>
+<p>The computer program is contained in the computer's memory. The data the program needs to carry out the work of the program is either contained in the program's memory or is obtained from the input devices. The results of the program's execution are provided by the output devices. The order in which the instructions are carried out is performed by the control unit.</p>
+<h4 id="memory">Memory</h4>
+<p>We access memory by providing the address from which we wish to read, or to which we wish to write.</p>
+<p>To read the contents of a memory location, we first place the address of that location in the memory's address register (MAR) and then interrogate the computer's memory. The information stored in the location having that address will be placed in the memory's data register (MDR).</p>
+<p>To write a value in a memory location, we first write the address of the memory in the MAR, and the value to be stored in MDR. We the interrogate the computer' memory with the WE asserted. The information contained in the MDR will be written into the memory location whose address is in the MAR.</p>
+<p>The value stored in each memory location can be changed, but the location's memory location remains unchanged.</p>
+<h4 id="processing-unit">Processing Unit</h4>
+<p>The actual processing of information in the computer is carried out by the processing unit.</p>
+<p>The simplest processing unit is the ALU (Arithmetic and Logic Unit). The ALU normally processes data elements of a fixed size referred to as the <em>word length</em> of the computer. The data elements are called <em>words</em>. We say the LC-3 has a word length of 16 bits.</p>
+<p>Since the time it takes to access memory is long compared to the time it takes to perform the ADD or MUL, almost all computers have temporary storage for storing the result in order to avoid the much longer access time. And the most common form is a set of registers. Typically, the size of each register is identical to the size of values processed by the ALU.</p>
+<h4 id="input-and-output">Input and Output</h4>
+<p>They are generically referred to in computer jargon as peripherals.</p>
+<p>For input, keyboard, mouse, digital scanners and shopping mall kiosks.</p>
+<p>For output, monitor, printers, LED displays, disks and shopping mall kiosks.</p>
+<h4 id="control-unit">Control Unit</h4>
+<p>The CU keeps track of both where we are within the process of executing the program and where we are in the process of each instruction.</p>
+<p>To keep track of which instruction is being executed, the CU has an instruction register to contain that instruction. To keep track of which instruction is to be executed next, the CU has a register that contains the next instruction's address, which is called program counter.</p>
+<h3 id="the-lc-3-an-example-von-neumann-machine">The LC-3: An Example von Neumann Machine</h3>
+<h3 id="instruction-processing">Instruction Processing</h3>
+<h4 id="the-instruction">The Instruction</h4>
+<p>The most basic unit of computer processing is the instruction. It is made up of two parts, the opcode and the operands.</p>
+<h4 id="the-instruction-cycle">The Instruction Cycle</h4>
+<p>The entire sequence of steps needed to process an instruction is called the instruction cycle. It consists of six phases, each phase requiring zero or more steps.</p>
+<p>FETCH -&gt; DECODE -&gt; EVALUATE ADDRESS -&gt; FETCH OPERANDS -&gt; EXECUTE -&gt; STORE RESULT </p>
+<h5 id="fetch">FETCH</h5>
+<ol>
+<li>Load MAR with the contents of the PC, and simultaneously increment the PC.</li>
+<li>Interrogate memory, resulting in the instruction being placed in the MDR.</li>
+<li>Load the IR with the contents of the MDR.</li>
+</ol>
+<p>Step 1 takes one clock cycle. Step 2 takes one or many clock cycles. Step 3 takes one clock cycle.</p>
+<h5 id="decode">DECODE</h5>
+<p>Input is the four-bit opcode IR[15:12]. The output line asserted is the one corresponding to the opcode at the input. Depending on which output of the decoder is asserted, the remaining 12 bits identify what else is needed to process the instruction.</p>
+<p>尤其是取寄存器T_T</p>
+<h5 id="evaluate-address">EVALUATE ADDRESS</h5>
+<p>This phase computes the address of the memory location that is needed to process the instruction.</p>
+<p>For example, for LD, it causes a value stored in memory to be loaded into a register, the address was obtained by sign-extending bits [8:0] of the instruction to 16 bits and adding that value to the current contents of PC.</p>
+<h5 id="fetch-operands">FETCH OPERANDS</h5>
+<p>This phase obtains the source operands needed to process this instruction.</p>
+<p>For example, for LD, it loads the MAR with the address calculated in the EVALUATE ADDRESS phase and reads memory that resulted in the source operand being placed in MDR. For ADD, this phase consists of obtaining the source operands in SR1 and SR2.</p>
+<h5 id="execute">EXECUTE</h5>
+<p>This phase carries out the execution of the instruction.</p>
+<p>For ADD, this phase consists of the step of performing the addition in the ALU.</p>
+<h5 id="store-result">STORE RESULT</h5>
+<p>The result is written to its designated destination.</p>
+<p>For ADD, this action is performed during the EXECUTE phase, so a separate STORE RESULT phase is not needed.</p>
+<h4 id="changing-the-sequence-of-execution">Changing the Sequence of Execution</h4>
+<p>The control instruction's purpose is to change the sequence of instruction execution.</p>
+<p>As we know, each instruction cycle starts with load the MAR with the PC. Thus, if we wish to change the sequence of instructions executed, we must change the contents of PC between the time it is incremented and the start of the FETCH phase of the next instruction cycle.</p>
+<p>Control instructions perform that function by loading the PC during the EXECUTE phase.</p>
+<h4 id="control-of-the-instruction-cycle">Control of the Instruction Cycle</h4>
+<p>The instruction cycle is controlled by a synchronous finite state machine. Each state corresponds to one machine cycle of activity that takes one clock cycle to perform.</p>
+<p>The FETCH phase takes three clock cycles.</p>
+<ol>
+<li>In order for the contents of PC to be loaded into the MAR, the FSM must asserted the GatePC and the LD.MAR. GatePC connects the PC to the processor bus. LD.MAR, the WE of MAR, loads the contents of the bus into MAR at the end of the current clock cycle.</li>
+<li>In order for the PC to be incremented, the FSM must asserted the PCMUX select lines to choose the output of the box labelled +1 and also must asserted the LD.PC to load the output of the PUMUX at the end of the current clock cycle.</li>
+<li>In order to transfer the instruction from the MDR to the IR, the FSM must asserted the GateMDR and the LD.IR, which causing the IR to be loaded at the end of the clock cycle.</li>
+</ol>
+<p>The DECODE phase takes one cycle.</p>
+<ol>
+<li>The FSM can go to the appropriate next state for processing the instructions depending on the IR[15:12].</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>It is sometimes necessary not to execute the next sequential instruction but rather to access another location to find the next instruction to execute.</p>
+</div>
+<h4 id="halting-the-computer">Halting the Computer</h4>
+<p>The <strong>clock</strong> defines the amount of time each machine cycle takes. And it enables the synchronous FSM to continue on to the next clock cycle, which corresponds to the next state of the instruction cycle. So stopping the instruction cycle requires stopping the clock.</p>
+<p>We can <strong><em>AND</em></strong> the clock generator with a RUN latch. If the RUN latch is 1, the output of the clock circuit is the same as the output of the clock generator. If the RUN latch is 0, the output of the clock circuit is 0. Thus, stopping the instruction cycle requires only clearing the RUN latch.</p>
+<h2 id="the-lc-3">The LC-3</h2>
+<h3 id="the-isa-overview">The ISA: Overview</h3>
+<p>The ISA specifies the <code>memory organization</code>, <code>register set</code>, and <code>instruction set</code>, including the <code>opcodes</code>, <code>data types</code> and <code>addressing modes of the instructions</code> in the instruction set.</p>
+<h4 id="memory-organization">Memory Organization</h4>
+<p>The LC-3 memory has 2^16 memory locations, and an addressability of 16 bits.</p>
+<p>Since the normal unit of data that is processed in the LC-3 is 16 bits, we refer to 16 bits as one word, and we say the LC-3 is word-addressable.</p>
+<h4 id="registers">Registers</h4>
+<p>Since it takes far more than one clock cycles to obtain data from memory, the LC-3 provides additional temporary storage locations, which is a set of registers, that can be accessed in a single clock cycle. Each registers in the set is called a general purpose register (GPR).</p>
+<h4 id="the-instruction-set">The Instruction Set</h4>
+<p>It is defined by its set of opcodes, data types, and addressing modes. The addressing modes determine where the operands are located. The data type is the representation of the operands in 0s and 1s.</p>
+<h5 id="opcodes">Opcodes</h5>
+<h5 id="data-types">Data Types</h5>
+<h5 id="addressing-modes">Addressing Modes</h5>
+<p>An operand can be found in one of three places: in memory, in a register, or as a part of the instruction (a literal or an immediate operand).</p>
+<p>The LC-3 supports five addressing modes: immediate, register, PC-relative, indirect, and Base+offset.</p>
+<h5 id="conditional-codes">Conditional Codes</h5>
+<p>The LC-3 has three single-bit registers that are individually set or cleared each time one of the eight GPR is written into as a result of the execution of one of the operate instructions or one of the load instructions.</p>
+<p>The set of three single-bit registers are referred to as CCs because the condition of those bits are used to change the sequence of execution of the instructions.</p>
+<h3 id="operating-instructions">Operating Instructions</h3>
+<h4 id="the-lea-instruction-load-effective-address">The LEA Instruction (Load Effective Address)</h4>
+<p>It dose not really operate on data, it simply loads a register with an address.</p>
+<p>Note that the value to be loaded into the register does not involve any access to memory, nor does it have any effect on the conditional codes.</p>
+<h3 id="data-movement-instructions">Data Movement Instructions</h3>
+<p>Data movement instructions move instructions between the general purpose registers and the memory and between the registers and the input/output devices.</p>
+<h4 id="pc-relative-mode">PC-Relative Mode</h4>
+<p>The <strong>LD</strong> and <strong>ST</strong> specify the <em>PC-relative</em> addressing mode. The memory address is computed by sign-extending bits [8:0] to 16bits and adding the result to the incremented PC. The three one-bit condition codes are set depending on whether the value loaded is negative, positive or zero.</p>
+<p>The relevant parts of the data path required to execute LD consist of three steps.</p>
+<ol>
+<li>The incremented PC is added to the sign-extended value contained in IR[8:0], and the result is loaded into the MAR.</li>
+<li>Memory is read and the contents of the address is loaded into the MDR.</li>
+<li>The value stored in that address is loaded into the DR, and the NZP condition codes are set.</li>
+</ol>
+<p>The address of the memory operand is limited to a small range of the total memory. That is, the address can only be within +256 or -255 locations of the LD or ST.</p>
+<p>$
+[- 2^{n-1} + 1, 2^{n-1} - 1 + 1]
+$</p>
+<h4 id="indirect-mode">Indirect Mode</h4>
+<p><strong>LDI</strong> and <strong>STI</strong> specify the <em>indirect</em> addressing mode. The address is the address of the address of the operand to be loaded or stored.</p>
+<p>There are five steps.</p>
+<ol>
+<li>The incremented PC is added to the sign-extended value contained in IR[8:0], and the result is loaded into the MAR.</li>
+<li>Memory is read and the contents of the address is loaded into the MDR.</li>
+<li>The MAR is loaded with the contents of MDR. The MDR is loaded with the address of the address of the operand.</li>
+<li>Memory is again read, and the MDR again loaded. This time MDR is loaded with the address of the operand.</li>
+<li>The contents of the MDR is loaded into the DR, and the NZP condition codes are set.</li>
+</ol>
+<p>The indirect addressing mode allows the address of the operand to be anywhere in the computer's memory.</p>
+<h4 id="base-offset-mode">Base + offset Mode</h4>
+<p><strong>LDR</strong> and <strong>STR</strong> specify the <em>Base + offset</em> addressing mode. The Base + offset mode is so named because the address of the operand is obtained by adding a sign-extended six-bit offset to a base register.</p>
+<p>There are three steps.</p>
+<ol>
+<li>The contents of the BaseR is added to the sign-extended value contained in IR[5:0], and the result is loaded into the MAR.</li>
+<li>Memory is read, and the contents of the address is loaded into the MDR.</li>
+<li>The contents of the MDR is loaded into the DR and the NZP condition codes are set.</li>
+</ol>
+<h3 id="control-instructions">Control Instructions</h3>
+<p>The LC-3 has five opcodes that enable the sequential execution flow to be broken: conditional branch, unconditional jump, subroutine call, TRAP and RTI (Return from Trap or Interrupt).</p>
+<p>The TRAP instruction breaks the sequential execution of a user program to start a sequence of instructions in the operating system.</p>
+<h4 id="conditional-branches">Conditional Branches</h4>
+<p>Based on the execution of previous instructions in the program, the conditional branch's EXECUTE phase either does nothing or it loads the PC with the address of the instruction it wishes to execute next.</p>
+<p>During the EXECUTE phase of the BR instruction cycle, the processor examines the condition codes whose associated bits in the instruction are 1.</p>
+<ol>
+<li>If any of bits [11:9] are 1, then all three condition codes are examined, so it is an unconditional branch.</li>
+<li>If any of bits [11:9] are 0, the associated condition codes are not examined (so never branch).</li>
+<li>If any of the condition codes that are examined are set, then the PC is loaded with the address obtained in the EVALUATE ADDRESS phase.</li>
+<li>If none of the condition codes that are examined are set, the incremented PC is left unchanged.</li>
+</ol>
+<h4 id="the-jmp-instruction">The JMP Instruction</h4>
+<p>For BR, the next instruction executed must be within the range of addresses that can be computed by adding the incremented PC to the sign-extended offset obtained from bits [8:0] of the instruction.</p>
+<p>So the JMP is provided. It has no limitation on where the next instruction to be executed must reside.</p>
+<h4 id="the-trap-instruction">The TRAP Instruction</h4>
+<p>The TRAP changes the PC to a memory address that is part of the operating system so that the operating system will perform some task on behalf of the program that is executing. We also say the TRAP instruction invokes an operating system <em>service call</em>. Once the operating system is finished performing the service call, the PC is set to the address of the instruction following the TRAP instruction, and the program continues.</p>
+<p>In this way, a program can, during its execution, request services from the operating system and continue processing after each such service is performed.</p>
+<h4 id="basic-components-of-the-data-path">Basic Components of the Data Path</h4>
+<h5 id="the-global-bus">The Global Bus</h5>
+<p>LC-3 global bus consists of 16 wires and associated electronics. It allows one structure to transfer up to 16 bits of information to another structure by making the necessary electronic connections on the bus.</p>
+<p>Each structure that supplies values to the bus has a triangle just behind its input arrow to the bus. The triangle, called a <em>tristate device</em>, allows the computer's control logic to enable exactly one supplier to provide information to the bus at any one time. This structure wishing to obtain the value being supplied can do so by asserted the LD.x signal.</p>
+<h6 id="memory_1">Memory</h6>
+<p>Memory contains both instructions and data. It is accessed by loading the MAR with the address of the location to be accessed. And the contents we want to load or store is in the MDR.</p>
+<h5 id="the-alu-and-the-register-file">The ALU and the Register File</h5>
+<p>The ALU can supply 16 bits to the bus, and that value can then be written into the register specified by the three-bit register number DR. The 16 bits supplied to the bus are also input logic that determines whether that 16-bit value is negative, zero or positive.</p>
+<h5 id="the-pc-and-the-pcmux">The PC and the PCMUX</h5>
+<p>The addition for PC-relative addressing mode is performed during the EVALUTE ADDRESS phase, and takes place in the special adder. ALU is used during the EXECUTE phase.</p>
+<h5 id="the-marmux">The MARMUX</h5>
+<p>The MARMUX controls which of two sources will supply the MAR with the appropriate address during the execution of a load, a store or a TRAP instruction.</p>
+<h4 id="the-instruction-cycle-specified-to-the-lc-3">The Instruction Cycle Specified to the LC-3</h4>
+<ol>
+<li>During the EVALUATE ADDRESS phase, the action takes place in ADDER, not ALU.</li>
+<li>In the STORE RESULT phase, the contents of MDR is gated onto the global bus, from which it is loaded into DR and supplied to the condition code logic in order to set the condition codes.</li>
+</ol>
+<blockquote>
+<p>在STORE RESULT阶段MDR才给到总线，很快写入RegFile并送到Logic中改CCs</p>
+<p>一个时钟周期</p>
+</blockquote>
+<h2 id="assembly-language">Assembly Language</h2>
+<h3 id="beyond-the-assembly-of-a-single-assembly-language-program">Beyond the Assembly of a Single Assembly Language Program</h3>
+<h4 id="the-executable-image">The Executable Image</h4>
+<p>When a computer begins execution of a program, the entity being executed is call an executable image.</p>
+<p>The executable image is created from modules created independently. Each module is translated separately into an object file, and finally combine all the object modules together into one executable image.</p>
+<p>The executable image is produced at <em>link</em> time.</p>
+<h4 id="more-than-one-object-file">More than One Object File</h4>
+<p>We can use the pseudo-op .EXTERNAL to mark the symbol as belonging to another module, without assigning it an address.</p>
+<h2 id="data-structures">Data Structures</h2>
+<p>An abstract data type is a storage mechanism that is defined by the operations performed on it and not at all by the specific manner in which it is implemented.</p>
+<p>Data structures, or abstract data types: stacks, queues, character strings.</p>
+<h3 id="subroutines">Subroutines</h3>
+<h4 id="the-callreturn-mechanism">The Call/Return Mechanism</h4>
+<p>The call/return mechanism consists of two instructions.</p>
+<ol>
+<li>
+<p>JSR(R) is in the caller program and does two things:</p>
+</li>
+<li>
+<p>It loads the PC with the starting address of the subroutine.</p>
+</li>
+<li>It loads R7 with the address immediately after the address of the JSR(R) instruction.</li>
+</ol>
+<p>We call the address we come back to the <em>return linkage</em>.
+2. JMP R7 is the last instruction in the subroutine.</p>
+<ol>
+<li>It loads the PC with the contents of R7, the address just after the address of the JSR instruction.</li>
+</ol>
+<h4 id="jsrr-the-instruction-that-calls-the-subroutine">JSR(R) —— The Instruction That Calls the Subroutine</h4>
+<p>The instruction uses one of two addressing modes for computing the starting address of the subroutine, PC-relative addressing or Base Register addressing. Bit [11] specifies the addressing mode, the value 1 if the addressing mode is PC-relative, and the value 0 if the addressing mode is Base Register addressing.</p>
+<p>JSRR has no limitation on where the next instruction to be executed must reside, but JSR does not provide this feature.</p>
+<h4 id="saving-and-storing-register">Saving and Storing Register</h4>
+<p><em>Callee save</em>: the subroutine saves and restores the registers.</p>
+<p><em>Caller save</em>: the calling program saves and restores the register value.</p>
+<h4 id="library-routines">Library Routines</h4>
+<p><img alt="img" src="library.png" /></p>
+<h3 id="the-stack">The Stack</h3>
+<h4 id="the-stack-an-abstract-data-type">The Stack —— An Abstract Data Type</h4>
+<p>The concept of a stack is the specification of how it is to be accessed. Simply put: Last In, First Out, or LIFO.</p>
+<h4 id="implementation-in-memory">Implementation in Memory</h4>
+<p>The stack consists of a sequence of memory locations along with a mechanism, called the <em>stack pointer</em>, which keeps track of the top of the stack. In LC-3, the SP is R6. The stack grows toward zero. And the data already stored on the stack does not physically move.</p>
+<h5 id="the-stack-protocol">The stack protocol</h5>
+<p>If we wish to push a value onto the stack, we simply load that value into R0 and execute JSR PUSH. To pop a value from the stack into R0, we simply execute JSR POP. If we wish to change the location or the size of the stack, we adjust BASE and MAX accordingly. And this protocol has considered the <strong>underflow</strong> and <strong>overflow</strong>, it will report success or failure in R5.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code>;The stack consists of memory locations x3FFF through x3FFB.
+;R6 is the stack pointer.
+POP AND R5, R5, #0
+    ST R1, Save1
+    ST R2, Save2
+    LD R1, EMPTY
+    ADD R2, R6, R1
+    BRz fail_exit   ;underflow
+    LDR R0, R6, #0
+    ADD R6, R6, #1
+    BR success_exit
+
+PUSH    AND R5, R5, #0
+        ST R1, Save1
+        ST R2, Save2
+        LD R1, FULL 
+        ADD R2, R6, R1
+        BRz fail_exit   ;overflow
+        ADD R6, R6, #-1
+        STR R0, R6, #0
+
+success_exit    LD R2, Save2
+               LD R1, Save1
+               RET
+
+fail_exit   LD R2, Save2
+           LD R1, Save1
+           ADD R5, R5, #1   ;R5 &lt;-- failure
+           RET
+
+EMPTY   .FILL xC000
+FULL    .FILL xC005
+Save1   .FILL x0000
+Save2   .FILL x0000
+</code></pre></div></td></tr></table></div>
+<h3 id="recursion">Recursion</h3>
+<h3 id="the-queue">The Queue</h3>
+<p>The defining property of the queue is <strong>FIFO</strong>. We need to keep track of two ends of the storage structure: a FRONT pointer for servicing (removing elements from the front of the queue) and a REAR pointer for entering (inserting into the rear of the queue).</p>
+<p>We arbitrarily assign the FRONT pointer to the location just ==before== the first element of the queue. We assign the REAR pointer to the location ==containing== the most recent element that was added to the queue.</p>
+<p>When a value is removed by means of a load instruction, what is stored in the memory location is not erased.</p>
+<h4 id="the-basic-operations-remove-from-front-insert-at-rear">The Basic Operations: Remove from Front, Insert at Rear</h4>
+<p>Since FRONT points to the location just in front of the first element in the queue, we remove a value by first incrementing FRONT and then loading the value stored at that incremented address.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>ADD R3, R3, #1
+LDR R0, R3, #0
+</code></pre></div></td></tr></table></div>
+<p>To insert another element at the back of the queue:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>ADD R4, R4, #1
+STR R0, R4, #0
+</code></pre></div></td></tr></table></div>
+<h4 id="wrap-around">Wrap-Around</h4>
+<p>"Wrap-around" works by having our removal and insertion algorithms test the contents of FRONT and REAR for the value x8005. If we wish to insert, and REAR contains x8005, we know we have reached the end of our available storage and we must see if x8000 is available. If we wish to remove, we must first see if FRONT contains the address x8005. If it does, the front of the queue is in x8000.</p>
+<p>The code for remove:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>    LD R2, LAST
+    ADD R2, R3, R2
+    BRnp SKIP_1
+    LD R3, FIRST
+    BR SKIP_2
+SKIP_1 ADD R3, R3, #1
+SKIP_2 LDR R0, R3, #0
+    RET
+LAST .FILL x7FFB    ;x-8005
+FIRST .FILL X8000
+</code></pre></div></td></tr></table></div>
+<p>The code for insert:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>    LD R2, LAST
+    ADD R2, R4, R2
+    BRnp SKIP_1
+    LD R4, FIRST
+    BR SKIP_2
+SKIP_1 ADD R4, R4, #1
+SKIP_2 STR R0, R4, #0
+    RET
+LAST .FILL x7FFB    ;x-8005
+FIRST .FILL x8000
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>如果FRONT到达x8005，返回x8000，FRONT++移出</p>
+<p>如果REAR到达x8005， 返回x8000， REAR++插入</p>
+</blockquote>
+<h4 id="how-many-elements-can-we-store-in-a-queue">How Many Elements Can We Store in a Queue?</h4>
+<p>If the queue is empty, FRONT = REAR.</p>
+<p>If the queue is FULL, FRONT = REAR + 1.</p>
+<h4 id="test-for-underflow-overflow">Test for Underflow, Overflow</h4>
+<h4 id="the-complete-story">The Complete Story</h4>
+<blockquote>
+<p>相遇即为终止</p>
+</blockquote>
+<p>To insert, we first have to make sure the queue is not full. To do that, we increment the REAR pointer and then test REAR=FRONT.</p>
+<ol>
+<li>If the REAR pointer was initially x8005, we increment REAR by setting it to x8000; that is, we need to wrap-round.</li>
+<li>If the queue is full, we need to set REAR back to its original value, and return, reporting failure.</li>
+<li>If the queue is not full, we store the item we wish to insert in REAR, and return, reporting success.</li>
+</ol>
+<p>To remove, we first make sure the queue is not empty by testing whether REAR=FRONT.</p>
+<ol>
+<li>If REAR=FRONT, the queue is empty, so we return, reporting failure.</li>
+<li>If REAR is not the same as FRONT, the queue is not empty, so we can remove the front element.</li>
+</ol>
+<p>To do this, we first test to see if FRONT=x8005.</p>
+<ol>
+<li>If it is, we set FRONT=x8000.</li>
+<li>If it isn't, we increment FRONT.</li>
+</ol>
+<p>In both cases, we then load the value from that memory location into R0, and return, reporting success.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code>;Input: R0 for item to be inserted, R3 is FRONT, R4 is REAR
+;Output: R0 for item to be removed
+INSERT   ST R1, SaveR1
+        AND R5, R5, #0
+        LD R1, NEG_LAST
+        ADD R1, R1, R4
+        BRnp SKIP1
+        LD R4, FIRST
+        BR SKIP2
+SKIP1   ADD R4, R4, #1
+SKIP2   NOT R1, R4
+        ADD R1, R1, #1
+        ADD R1, R1, R3
+        BRz FULL
+        STR R0, R4, #0
+        BR DONE
+FULL    LD R1, NEG_FIRST
+        ADD R1, R1, R4
+        BRnp SKIP3
+        LD R4, LAST
+        BR SKIP4
+SKIP3   ADD R4, R4, #-1
+SKIP4   ADD R5, R5, #1
+        BR DONE
+
+REMOVE  ST R1, SaveR1
+        AND R5, R5, #0
+        NOT R1, R4
+        ADD R1, R1, #1
+        ADD R1, R1, R3
+        BRz EMPTY
+        LD R1, NEG_LAST
+        ADD R1, R1, R3
+        BRz EMPTY
+        LD R1, NEG_LAST
+        ADD R1, R1, R3
+        BRnp SKIP5
+        LD R3, FIRST
+        BR SKIP6
+SKIP5   ADD R3, R3, #1
+SKIP6   LDR R0, R3, #0
+        BR DONE
+EMPRY   ADD R5, R5, #1
+DONE    LD R1, SaveR1
+        RET
+FIRST   .FILL x8000
+NEG_FIRST   .FILL x8000
+LAST    .FILL x8005
+NEG_LAST    .FILL x7FFB
+SaveR1  .BLKW 1
+</code></pre></div></td></tr></table></div>
+<h3 id="character-strings">Character Strings</h3>
+<p>Different alphanumeric strings require character strings of different lengths, but that is no problem since we allocate as many words of memory as we needed, followed by the null character x0000 to indicate the end of the character string.</p>
+<h2 id="io">I/O</h2>
+<h3 id="privilege-priority-and-the-memory-address-space">Privilege, Priority, and the Memory Address Space</h3>
+<h4 id="privilege-and-priority">Privilege and Priority</h4>
+<h5 id="privilege">Privilege</h5>
+<p>Privilege is all about the right to do something. Not all computer programs have the right to execute all instructions. Similarly, some memory locations are only available to the operating system. So we designate every computer program as either privileged or unprivileged.</p>
+<p>We often say <em>supervisor privilege</em> to indicate privileged. We say a program is executing in Supervisor mode to indicate privileged,  or User mode to indicate unprivileged.</p>
+<h5 id="priority">Priority</h5>
+<p>Priority is all about the urgency of a program to execute.</p>
+<h5 id="two-orthogonal-notions">Two Orthogonal Notions</h5>
+<p>These two concepts have nothing to do with each other.</p>
+<h5 id="the-processor-statue-register-psr">The Processor Statue Register (PSR)</h5>
+<p>Each program executing on the computer has associated with it two very important registers, the PC and the PSR.</p>
+<p>The PSR contains the privilege and priority assigned to that program.</p>
+<p>Bit[15] specifies the privilege, where PSR[15]=0 means supervisor privilege and PSR[15]=1 means unprivileged.</p>
+<p>Bits[10:8] specify the priority level (PL) of the program. The highest priority level is 7, the lowest is PL0.</p>
+<p>Bits[2:0] contains the current values of the condition codes.</p>
+<h4 id="organization-of-memory">Organization of Memory</h4>
+<p>Locations x0000 to x2FFF are privileged memory locations. They contain the various data structures and code of the operating system. They require supervisor privilege to access. They are referred to as system space.</p>
+<p>Locations x3000 to xFDFF are unprivileged  memory locations.</p>
+<p>Addresses xFE00 to xFFFF do not correspond to memory locations at all. Addresses xFE00 to xFFFF are used to identify registers that take part in input and output functions and some special registers associated with the processor. For example, the PSR is assigned address xFFFC, and the processor's Master Control Register (MCR) is assigned address xFFFE. The set of addresses from xFE00 to xFFFF is usually referred to as the I/O page.</p>
+<p>Finally, there are two stacks, a supervisor stack in system space and a user stack in user space. The supervisor stack is controlled by the operating system and requires supervisor privilege to access. The user stack is controlled by the user program and does not require privilege to access.</p>
+<p>Each has a stack pointer, Supervisor Stack Pointer and User Stack Pointer, to indicate the top of the stack. R6 is generally used as the SP for the active stack. Two registers, Saved_SSP and Saved_USP, are provided to save the SP not in use.</p>
+<h3 id="inputoutput">Input/Output</h3>
+<p>The simplest I/O devices usually need at least two registers: one to hold the data being transferred between the device and the computer, and one to indicate status information about the device.</p>
+<h4 id="memory-mapped-io">Memory-Mapped I/O</h4>
+<p>The I/O device registers are mapped to a set of addresses that are allocated to I/O device registers rather than to memory locations.</p>
+<p>Addresses xFE00 to xFFFF are reserved for input/output device registers.</p>
+<h4 id="asynchronous-vs-synchronous">Asynchronous vs. Synchronous</h4>
+<p>Most I/O is carried out at speeds very much slower than the speed of  the processor.</p>
+<p>I/O device usually operate at speeds very different from that of a microprocessor, and not in lockstep. We call this latter characteristic asynchronous. Most interaction between a processor and I/O is asynchronous. To control processing in an asynchronous world requires some protocol or handshaking mechanism. So for keyboard, we need a one-bit status register, called a flag, to indicate if someone has or has not typed a character. For monitor, we need a one-bit status register to indicate whether or not the most recent character sent to the monitor has been displayed.</p>
+<p>Each time the typist types a character, the ready bit is set to 1. Each time the computer reads a character, it clears the ready bit. By examining the ready bit before reading a character, the computer can tell whether it has already read the last character typed.</p>
+<blockquote>
+<p>flag == 1, 读新的；flag == 0, 不读，读过了</p>
+</blockquote>
+<p>The single ready bit provides enough handshaking to ensure that the asynchronous transfer of information between the typist and the microprocessor can be carried out accurately.</p>
+<h4 id="interrupt-driven-vs-polling">Interrupt-Driven vs. Polling</h4>
+<p>Interrupt-driven I/O: The keyboard controls the interaction.</p>
+<p>Polling: The ready bit is polled by the processor, asking if any key has been struck.</p>
+<h3 id="input-from-the-keyboard">Input from the Keyboard</h3>
+<h4 id="basic-input-register-kbdr-and-kbsr">Basic Input Register (KBDR and KBSR)</h4>
+<p>In order to handle character input from the keyboard, we need two things:</p>
+<ol>
+<li>A data register that contains the character to be input.</li>
+<li>A synchronous mechanism to let the processor know that input has occurred.</li>
+</ol>
+<p>The synchronous mechanism is contained in the status register associated with the keyboard. These two registers are called KBSR and KBDR. Address xFE00 is assigned to the KBSR, and address xFE02 is assigned to the KBDR.</p>
+<h4 id="the-basic-input-service-routine">The Basic Input Service Routine</h4>
+<p>KBSR [15] controls the synchronization of the slow keyboard and the fast processor.</p>
+<blockquote>
+<p>a key is struck ==&gt; KBDR[7:0] &lt;- ASCII code ==&gt; KBSR[15] &lt;- 1 ==&gt; LC-3 reads KBDR[7:0] ==&gt; KBSR[15] &lt;- 0</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>START LDI R1, A
+      BRzp START
+      LDI R0, B
+      BR NEXT_TASK
+A     .FILL xFE00
+B     .FILL xFE02
+</code></pre></div></td></tr></table></div>
+<h4 id="implementation-of-memory-mapped-input">Implementation of Memory-Mapped Input</h4>
+<p>Essentially three steps are required:</p>
+<ol>
+<li>The MAR is loaded with the address of a device register.</li>
+<li>Memory is read, since the address control logic selects the corresponding device register to provide input to the MDR, resulting in MDR being loaded with the contents at the specified memory location.</li>
+<li>The DR is loaded with the contents of MDR.</li>
+</ol>
+<h3 id="output-to-the-monitor">Output to the Monitor</h3>
+<h4 id="basic-output-registers-ddr-and-dsr">Basic Output Registers (DDR and DSR)</h4>
+<p>There are two registers, too. DDR drives the monitor display, DSR stands for Display Status Register. DSR is assigned address xFE04, and DDR is assigned address xFE06.</p>
+<blockquote>
+<p>DDR[7:0] &lt;- ASCII code, DSR[15] &lt;- 0 ==&gt; show on the screen ==&gt; DSR[15] &lt;- 1</p>
+</blockquote>
+<h4 id="the-basic-output-service-routine">The Basic Output Service Routine</h4>
+<p>When the monitor finishes processing the character on the screen, it automatically sets DSR[15]. As long as the DSR[15] is clear, the monitor is still processing the previous character, so the monitor is disabled as far as additional output from the processor is concerned.</p>
+<p>If input/output is controlled by the processor, a program can repeatedly test DSR[15] until it notes that ==the bit is set, indicating that it is OK to write a character to the screen==.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>START LDI R1, A
+      BRzp START
+      STI R0, B
+      BR NEXT_TASK
+A     .FILL xFE04
+B     .FILL xFE06
+</code></pre></div></td></tr></table></div>
+<h4 id="the-implementation-of-memory-mapped-output">The Implementation of Memory-Mapped Output</h4>
+<ol>
+<li>MAR is loaded with the address of a device register.</li>
+<li>The MDR</li>
+<li>After the address control logic asserts the load enable signal of DDR</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/Collapsar11?tab=repositories" target="_blank" rel="noopener" title="Collapsar11&#39;s github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
