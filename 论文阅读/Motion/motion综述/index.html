@@ -1,0 +1,1934 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%B3%95/">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+    
+    
+      
+        <title>综述 - slx's notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../CSS/admonition.css">
+    
+      <link rel="stylesheet" href="../../../CSS/other.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#human-motion-generation-a-survey" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="slx&#39;s notebook" class="md-header__button md-logo" aria-label="slx's notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            slx's notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              综述
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Collapsar11?tab=repositories" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Collapsar11's github
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="slx&#39;s notebook" class="md-nav__button md-logo" aria-label="slx's notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    slx's notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Collapsar11?tab=repositories" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Collapsar11's github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    课程笔记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    面向对象程序
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            面向对象程序
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/oop/Oop-%E4%B9%A0%E9%A2%98%E6%95%B4%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/oop/Oop-pta-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/oop/Oop-pta-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/oop/Oop-pta-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/oop/Oop-pta-5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/oop/Oop-pta-6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oop-PTA-6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统二
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统二
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Computer-System-II/Operating-System/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Computer-System-II/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operating System Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Computer-System-II/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operating System Structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Computer-System-II/OS-%E8%BF%9B%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Computer-System-II/OS-%E7%BA%BF%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thread
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Computer-System-II/OS-cpu%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CPU Scheduler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Computer-System-II/OS-synchronization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Synchronization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Intro-Of-Computer-System/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算机系统概论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据建模与分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            数据建模与分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E5%8F%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E6%84%9F%E7%9F%A5%E6%9C%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    感知机
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/k%E8%BF%91%E9%82%BB%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K近邻法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    朴素贝叶斯法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    论文阅读
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            论文阅读
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Motion
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Motion
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    综述
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    综述
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#human-motion-generation-a-survey" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human Motion Generation: A Survey
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Human Motion Generation: A Survey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      调查重点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      前置知识
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="前置知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motion-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Motion Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      人体运动数据表示
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      人体运动数据收集技术和特点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motion-generation-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion Generation Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-conditioned-motion-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text-conditioned Motion Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Text-conditioned Motion Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#action-to-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Action to Motion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-to-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text to Motion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-conditioned-motion-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio-conditioned Motion Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio-conditioned Motion Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#music-to-dance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Music to Dance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speech-to-gesture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speech to Gesture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scene-conditioned-motion-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scene-conditioned Motion Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scene-conditioned Motion Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scene-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scene representation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluation Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fidelity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fidelity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fidelity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparison-with-ground-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison with Ground-truth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naturalness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naturalness
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#physical-plausibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Plausibility
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diversity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diversity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diversity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intra-motion-diversity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intra-motion Diversity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inter-motion-diversity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inter-motion Diversity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condition-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Condition Consistency
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Condition Consistency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-motion-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text-Motion Consistency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-motion-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio-Motion Consistency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scene-motion-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scene-Motion Consistency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Study
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Work
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#human-motion-generation-a-survey" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human Motion Generation: A Survey
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Human Motion Generation: A Survey">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      调查重点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      前置知识
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="前置知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#motion-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Motion Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      人体运动数据表示
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      人体运动数据收集技术和特点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motion-generation-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion Generation Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-conditioned-motion-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text-conditioned Motion Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Text-conditioned Motion Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#action-to-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Action to Motion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-to-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text to Motion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-conditioned-motion-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio-conditioned Motion Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio-conditioned Motion Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#music-to-dance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Music to Dance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speech-to-gesture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speech to Gesture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scene-conditioned-motion-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scene-conditioned Motion Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scene-conditioned Motion Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scene-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scene representation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluation Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fidelity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fidelity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fidelity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparison-with-ground-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison with Ground-truth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naturalness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naturalness
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#physical-plausibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Plausibility
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diversity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diversity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diversity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intra-motion-diversity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intra-motion Diversity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inter-motion-diversity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inter-motion Diversity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condition-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Condition Consistency
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Condition Consistency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-motion-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text-Motion Consistency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-motion-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio-Motion Consistency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scene-motion-consistency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scene-Motion Consistency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Study
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Work
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>综述</h1>
+
+<h2 id="human-motion-generation-a-survey">Human Motion Generation: A Survey</h2>
+<h3 id="_1">调查重点</h3>
+<p>根据给定的条件信号生成人体运动，主要讨论文本、音频和场景条件。</p>
+<h3 id="_2">前置知识</h3>
+<h4 id="motion-data">Motion Data</h4>
+<h5 id="_3">人体运动数据表示</h5>
+<p>通过时间维度上的人体姿势序列来表示。</p>
+<p>分为基于关键点和基于旋转的。</p>
+<blockquote>
+<p><strong>Keypoint-based</strong></p>
+<p>用一组关键点表示人体，是身体上与解剖标志相对应的特定点。</p>
+<p>运动数据表示为随时间变化的一系列关键点配置。</p>
+<p>需要解决逆运动学 (inverse kinematics) 问题并将关键点转换为旋转。</p>
+<p>最近一些工作提出，用人体表面更多的身体标记来表示人体姿势，在身体形状和肢体扭曲方面信息更全面。</p>
+<p><strong>Rotation-based</strong></p>
+<p>人体姿势可以用关节角度来表示，即身体部位或节段相对于其父级在分层结构中的旋转。</p>
+<p>基于关节角度，使用统计网络模型对人体进行建模，捕捉身体形状和运动过程中的变形。</p>
+<p>统计人体模型：Skinned Multi-Person Linear model (SMPL)</p>
+<p><strong>SMPL 模型</strong></p>
+<p>由一组姿势和形状参数进行参数化，生成特定姿势和形状的人体 3D 网络。</p>
+<p>Pose parameters：<span class="arithmatex">\(\theta \in \mathbb{R} ^{K \times 3}\)</span>，<span class="arithmatex">\(K=24\)</span>，由关节的标准骨骼运动树中相对于父关节的相对旋转定义。</p>
+<p>Shape parameters：<span class="arithmatex">\(\beta \in \mathbb{R}^{10}\)</span>，表示身体形状配置，如身高等。</p>
+<p>模型生成包含 <span class="arithmatex">\(N=6890\)</span> 个顶点的三角网络，<span class="arithmatex">\(\mathcal{M}(\theta, \beta) \in \mathbb{R}^{N\times 3}\)</span>。</p>
+<p>获得最终网格后，通过预训练的线性回归器从顶点映射稀疏 3D 关键点。</p>
+<p>SMPL-X 扩展了 SMPL，身体、面部、手部被联合建模。</p>
+<p>替代建模方法，如 GHUM 和 STAR。</p>
+</blockquote>
+<h5 id="_4">人体运动数据收集技术和特点</h5>
+<p>四种方法：</p>
+<ul>
+<li>基于标记的运动捕捉 marker-based motion capture</li>
+<li>无标记运动捕捉  markless motion capture</li>
+<li>伪标记 pseudo-labeling</li>
+<li>手动注释 manual annotation</li>
+</ul>
+<blockquote>
+<p><strong>Marker-based motion capture</strong></p>
+<p>将小型反射标记或 IMU 放置在对象身体的特定位置，然后跟踪这些标记在 3D 空间中的运动。</p>
+<p>在 MoSh 的帮助下，通过应用正向运动学或参数化身体网格，使用该数据来获取 3D 关键点。</p>
+<p><strong>Makerless motion capture</strong></p>
+<p>使用计算机视觉算法，通过利用多视图几何获取 3D 运动，不需要一台或多台摄像机的标记。</p>
+<p>在捕获过程中将设置并同步多个 RGB 或 RGB-D 相机。</p>
+<p><strong>Pseudo-labeling</strong></p>
+<p>用于野外捕获的单眼 RGB 图像或视频。</p>
+<p>使用现有的人体姿势估计器 (OpenPose 和 VideoPose3D) 预测 2D 或 3D 人体关键点，或者将身体模型拟合到图像证据以生成伪 3D 网格标签。</p>
+<p><strong>Manual annotation</strong></p>
+<p>使用动画引擎手动设计人体运动。</p>
+<p>MikuMikuDance，MMD，可生成高质量动画。</p>
+</blockquote>
+<h4 id="motion-generation-methods">Motion Generation Methods</h4>
+<p>大致分为两类：</p>
+<ul>
+<li>基于回归模型，使用从输入条件编码的特征预测人体运动</li>
+<li>基于生成模型，对运动的基本分布（或条件下的联合分布）进行建模</li>
+</ul>
+<blockquote>
+<p><strong>VAE</strong></p>
+<p>通过使用前馈模型 (<span class="arithmatex">\(q_{\phi}(z|x)\)</span>) 近似难以处理的后验，主要优化目标是最小化该近似值与原始后验之间的 KL 散度。</p>
+<p>采用证据下界 ELBO 作为损失函数
+$$
+ELBO=\mathbb{E}<em>{z\sim q</em>{\phi}(z|x)}\log(p_{\theta}(x|z))-D_{KL}(q_{\phi}(z|x)||p_{\theta}(z))
+$$</p>
+<p><strong>NF</strong></p>
+<p>采用一系列可逆变换 <span class="arithmatex">\(\{f_i\}_{1:N}\)</span> 把简单的先验分布 <span class="arithmatex">\(p(z_0)\)</span> 映射到复杂的数据分布 <span class="arithmatex">\(p(x)\)</span></p>
+<p><strong>Motion Graph</strong></p>
+<p>表示为有向图 <span class="arithmatex">\(G=&lt;V,E&gt;\)</span>，V 表示节点或顶点的集合，E 表示有向边或过渡的集合。</p>
+<p>每个节点 <span class="arithmatex">\(v\in V\)</span> 表示一个姿势或关键帧，每个有向边 <span class="arithmatex">\(e \in E\)</span> 连接两个顶点 <span class="arithmatex">\((v_1, v_2)\)</span> 并表示相应姿势之间的可行过渡。</p>
+<p>Motion Graph 基于运动剪辑的集合构建，识别运动剪辑中的兼容姿势，并将它们与边缘连接起来，形成一个可以遍历以生成新运动序列的图。构建运动图之后，在图上执行随机游走。</p>
+<p>输出运动序列是与遍历的节点相对应的姿势的串联，确保姿势间的平滑过渡。</p>
+<p>创建了原始数据集中明确存在但与数据的整体特征一致的新运动序列。</p>
+</blockquote>
+<h3 id="text-conditioned-motion-generation">Text-conditioned Motion Generation</h3>
+<h4 id="action-to-motion">Action to Motion</h4>
+<p>根据特定类别，生成人体动作序列，通常用 one-hot 编码等技术表示。</p>
+<p>现有的一些方法，主要擅长生成单动作运动，过渡到生成涉及多个动作的复杂序列仍是挑战，并且需要额外的 post-processing 来连接不同动作。</p>
+<p>MultiAct 利用过去的运动来循环生成长期多动作 3D 人体运动，提出正面标准化方法。</p>
+<h4 id="text-to-motion">Text to Motion</h4>
+<p>利用自然语言描述生成人类动作序列。</p>
+<h3 id="audio-conditioned-motion-generation">Audio-conditioned Motion Generation</h3>
+<p>音频条件可以通过原始音频波形、频谱图和梅尔频率倒谱系数 (MFCC) 来表示。</p>
+<h4 id="music-to-dance">Music to Dance</h4>
+<p>根据输入的音乐序列生成相应的舞蹈动作。</p>
+<p>一个简单的想法是使用 full-supervised 回归模型，类似于 seq2seq 的翻译。</p>
+<p>基于 GAN 的方法应用对抗性学习来正则化生成的运动数据流形和真实运动数据流形之间的距离。</p>
+<p>另一类方法基于经典的运动图框架，将运动生成视为求解预构造图中的最佳路径。</p>
+<h4 id="speech-to-gesture">Speech to Gesture</h4>
+<p>根据输入语音音频生成一系列人类手势。集中在上半身运动。</p>
+<p>Co-speech gestures 有显著的人际差异，现在的一些方法不考虑说话人的身份，需要为每个说话人建立单独的模型，并阻碍了向一般场景的转移。此外，仅限于对文本或语音音频进行建模，并且无法将两种模式结合。</p>
+<p>Yoon 等人提出了考虑文本、音频和说话者身份三模态背景的生成框架。</p>
+<h3 id="scene-conditioned-motion-generation">Scene-conditioned Motion Generation</h3>
+<p>生成与场景上下文一致的合理人体运动。</p>
+<h4 id="scene-representation">Scene representation</h4>
+<p>现有的方法利用了场景表示的各种选项，包括 2D images，point clouds，mesh，3D objects和特定目标位置。</p>
+<p>大多数方法采用不止一种类型的场景表示作为输入，其中许多方法采用 past motion 或 start pose 作为输入。还出现了一些使用额外语言指令或动作标签生成 motion 的方法。</p>
+<h4 id="generation-pipeline">Generation pipeline</h4>
+<p>大多数现有方法提出了 multi-stage pipeline。</p>
+<p>一种常见的流程是首先预测目标位置或目标交互锚点，然后规划路径或轨迹，最后沿着轨迹填充运动。</p>
+<p>其它工作利用给定的目标位置，而不是预测。</p>
+<h3 id="dataset">Dataset</h3>
+<p>常用的数据集可以根据附带的条件信号进行分类，如具有配对人体运动和文本、音频和场景条件信号的数据集。</p>
+<blockquote>
+<p>Audio-Motion Datasets </p>
+<ul>
+<li>controlled dataset</li>
+<li>in-the-wild dataset</li>
+</ul>
+</blockquote>
+<h3 id="evaluation-metrics">Evaluation Metrics</h3>
+<h4 id="fidelity">Fidelity</h4>
+<p>评估生成的 motion 的自然度、平滑度、合理性等。</p>
+<h5 id="comparison-with-ground-truth">Comparison with Ground-truth</h5>
+<ul>
+<li>
+<p>Distance</p>
+</li>
+<li>
+<p>Accuracy</p>
+</li>
+</ul>
+<p>计算 the Percentage Correct 3D Keypoints (PCK)</p>
+<p>如果 joint 到 target 的距离在预定义的阈值内，就被视为准确。</p>
+<h5 id="naturalness">Naturalness</h5>
+<p>评估生成 motion 的自然程度，通常通过将生成的运动流形与真实运动流形进行比较来衡量。</p>
+<p>根据用于评估的空间，现有的度量可以分为 motion space 和 feature space。</p>
+<ul>
+<li>Motion space</li>
+</ul>
+<p>一些方法基于 motion space 中的几何统计来测量分布距离。</p>
+<ul>
+<li>Feature space</li>
+</ul>
+<p>使用独立的神经网络作为运动特征提取器来计算特征空间中的分布距离。</p>
+<h5 id="physical-plausibility">Physical Plausibility</h5>
+<p>物理合理性，指生成的运动符合物理规则的程度，特别是和脚与地面的相互作用相关：</p>
+<ul>
+<li>脚的滑动</li>
+</ul>
+<p>Some work measure the foot skating artifacts of the generated motion.</p>
+<ul>
+<li>脚与地面的接触</li>
+</ul>
+<h4 id="diversity">Diversity</h4>
+<p>为了生成各种人体动作并避免重复的内容，研究人员从不同层面测量生成结果：单个运动序列内的多样性，不同运动序列之间的多样性。</p>
+<h5 id="intra-motion-diversity">Intra-motion Diversity</h5>
+<p>长序列运动生成会引发 freezing 问题。为了评估 non-freezability 并区分静态运动。</p>
+<ul>
+<li>Variation</li>
+<li>Freezing rate</li>
+</ul>
+<h5 id="inter-motion-diversity">Inter-motion Diversity</h5>
+<p>为了评估生成的运动流形的运动间多样性，现有的度量可以分为：</p>
+<ul>
+<li>
+<p>coverage</p>
+</li>
+<li>
+<p>multi-modality</p>
+</li>
+</ul>
+<p>给定相同的条件信号，概率生成方法可以生成合理的相应运动的分布。多模态指标旨在评估分布的变化。</p>
+<h4 id="condition-consistency">Condition Consistency</h4>
+<h5 id="text-motion-consistency">Text-Motion Consistency</h5>
+<ul>
+<li>Accuracy</li>
+<li>Distance</li>
+</ul>
+<h5 id="audio-motion-consistency">Audio-Motion Consistency</h5>
+<ul>
+<li>Beat (节拍)</li>
+</ul>
+<p>评估生成的运动的运动节拍与输入音频节拍的对齐程度。</p>
+<ul>
+<li>Semantics</li>
+</ul>
+<h5 id="scene-motion-consistency">Scene-Motion Consistency</h5>
+<p>将场景划分为地面和其他物体来区分物理合理性和场景运动一致性。</p>
+<ul>
+<li>Non-collision score</li>
+</ul>
+<p>评估生成的运动与环境中其它物体或障碍物发生碰撞的安全性和物理合理性。</p>
+<ul>
+<li>Human-scene contact</li>
+</ul>
+<p>关注接触区域，来评估场景运动一致性，考虑到不同的场景条件有不同的定义。</p>
+<h4 id="user-study">User Study</h4>
+<ul>
+<li>Preference</li>
+<li>Rating</li>
+</ul>
+<h3 id="future-work">Future Work</h3>
+<ul>
+<li>Data</li>
+</ul>
+<p>调查异构数据源的使用，弱监督学习方法，多模态基础模型。</p>
+<ul>
+<li>Semantics</li>
+</ul>
+<p>如何为生成模型配备人类运动语义的先验知识。</p>
+<ul>
+<li>
+<p>Evaluation</p>
+</li>
+<li>
+<p>Controllability</p>
+</li>
+</ul>
+<p>控制生成内容。</p>
+<ul>
+<li>Interactivity</li>
+</ul>
+<p>人体运动的交互性，人与人以及人与环境相互作用。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/Collapsar11?tab=repositories" target="_blank" rel="noopener" title="Collapsar11&#39;s github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
