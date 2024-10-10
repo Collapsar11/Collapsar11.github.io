@@ -1945,8 +1945,12 @@
 <h4 id="motion-representation-in-latents">Motion Representation in Latents</h4>
 <p>本文基于 transformer-based 架构，构建 motion VAE（之后记作 MAE），由 transformer encoder <span class="arithmatex">\(\mathcal{E}\)</span> 和 transformer decoder <span class="arithmatex">\(\mathcal{D}\)</span> 组成，<span class="arithmatex">\(\mathcal{V}=\{\mathcal{E,D}\}\)</span> 由仅使用 MSE-loss 和 KL-loss 的运动 <span class="arithmatex">\(x^{1:L}\)</span> 重建进行训练。此外，对 <span class="arithmatex">\(\mathcal{E,D}\)</span> 使用长跳跃连接结构，进一步增强潜在表示。</p>
 <blockquote>
-<p>放一个 VAE 的图：</p>
-<p><img src="MotionLatentDiffusion.assets/image-20241007192624814.png" alt="image-20241007192624814" style="zoom: 80%;" /></p>
+<p>放一个 VAE 的图：
+</p>
+</blockquote>
+<!-- > <img src="MotionLatentDiffusion.assets/image-20241007192624814.png" alt="image-20241007192624814" style="zoom: 80%;" /> -->
+<blockquote>
+<p>!()[MotionLatentDiffusion.assets/image-20241007192624814.png]</p>
 <p>什么是长跳跃连接？</p>
 <p>长跳跃连接是指在神经网络中，将较早层的输出直接连接到较后层的输入，跨越多个中间层。</p>
 <p>实现方式：直接相加，将早期层的输出直接加到后面层的特征图上；拼接，将早期层的输出与后面层的特征图在通道维度上拼接。</p>
@@ -2023,8 +2027,12 @@
 <li>模型计算 Q 和 K 之间的相似度，然后使用这些相似度来加权值</li>
 </ul>
 <p>在扩散模型中，可以让噪声潜在表示作为查询，条件信息作为键和值，从而让模型根据当前生成的内容动态地关注条件的不同方面。</p>
-<p>放一个 self-attention 的图</p>
-<p><img src="MotionLatentDiffusion.assets/image-20241007224613015.png" alt="image-20241007224613015" style="zoom:80%;" /></p>
+<p>放一个 self-attention 的图
+</p>
+</blockquote>
+<!-- > <img src="MotionLatentDiffusion.assets/image-20241007224613015.png" alt="image-20241007224613015" style="zoom:80%;" /> -->
+<blockquote>
+<p>!()[MotionLatentDiffusion.assets/image-20241007224613015.png]</p>
 <p>Self-Attention：输入来源于单一输入序列</p>
 <p>Cross-Attention：输入来源于两个不同的输入序列</p>
 </blockquote>
