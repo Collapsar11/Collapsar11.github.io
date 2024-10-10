@@ -999,6 +999,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Motion/MotionLatentDiffusion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MotionLatentDiffusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1124,9 +1145,8 @@
 <p><span class="arithmatex">\(x\)</span> 是 <span class="arithmatex">\(\mathcal{X}\)</span> 上的随机向量, <span class="arithmatex">\(Y\)</span> 是 <span class="arithmatex">\(\mathcal{Y}\)</span> 上的随机向量, <span class="arithmatex">\(P(X, Y)\)</span> 是 <span class="arithmatex">\(X\)</span> 和 <span class="arithmatex">\(Y\)</span> 的联合概率分布 <span class="arithmatex">\(T\)</span> 由 <span class="arithmatex">\(P(X,Y)\)</span> 独立同分布产生.</p>
 <p>朴素贝叶斯法学习 <span class="arithmatex">\(P(X,Y)\)</span>, 具体学习 <span class="arithmatex">\(P(Y=c_k)\)</span> 和 <span class="arithmatex">\(P(X=x|Y=c_k)\)</span>.</p>
 <p>朴素贝叶斯法对条件概率分布作了条件独立性的假设：
-$$
-P(X=x|Y=y)=P(X^{(1)}=x^{(1)}, ..., X^{(n)}=x^{(n)}|Y=c_k) \ =\underset{j=1}{\overset{n}{\prod}}P(X^{(j)}=x^{(j)}|Y=c_k)
-$$
+$$ P(X=x|Y=y)=P(X^{(1)}=x^{(1)}, ..., X^{(n)}=x^{(n)}|Y=c_k) \\
+=\underset{j=1}{\overset{n}{\prod}}P(X^{(j)}=x^{(j)}|Y=c_k) $$
 条件独立假设等于是说用于分类的特征在类确定的条件下都是条件独立的。这一假设使朴素贝叶斯法变得简单，但有时会牺牲一定的分类准确率。</p>
 <p>朴素贝叶斯法分类时，对给定的输入 <span class="arithmatex">\(x\)</span>，通过学习到的模型计算后验概率分布 <span class="arithmatex">\(P(Y=c_k|X=x)\)</span>，将后验概率最大的类作为 <span class="arithmatex">\(x\)</span> 的类输出。</p>
 <p>后验概率计算根据贝叶斯定理进行：
@@ -1150,7 +1170,7 @@ $$</p>
 $$
 L(Y,f(X))=
 \begin{cases}
-1 &amp; Y\neq f(X) \
+1 &amp; Y\neq f(X) \\
 0 &amp; Y=f(X) \
 \end{cases}
 $$
@@ -1165,9 +1185,9 @@ $$
 为了使期望风险最小化，只需对 <span class="arithmatex">\(X=x\)</span> 逐个极小化，由此得到：
 $$
 \begin{aligned}
-f(x)&amp;=\arg \underset{y\in \mathcal{Y}}{\min}{\underset{k=1}{\overset{K}{\sum}}}L(c_k,y)P(c_k|X=x) \
-&amp;=\arg \underset{y\in \mathcal{Y}}{\min}{\underset{k=1}{\overset{K}{\sum}}}I(y \neq c_k)P(y=c_k|X=x) \
-&amp;=\arg \underset{y \in \mathcal{Y}}{\min}(1-P(y=c_k|X=x)) \
+f(x)&amp;=\arg \underset{y\in \mathcal{Y}}{\min}{\underset{k=1}{\overset{K}{\sum}}}L(c_k,y)P(c_k|X=x) \\
+&amp;=\arg \underset{y\in \mathcal{Y}}{\min}{\underset{k=1}{\overset{K}{\sum}}}I(y \neq c_k)P(y=c_k|X=x) \\
+&amp;=\arg \underset{y \in \mathcal{Y}}{\min}(1-P(y=c_k|X=x)) \\
 &amp;=\arg \underset{y \in \mathcal{Y}}{\max}P(y=c_k|X=x)
 \end{aligned}
 $$
@@ -1219,8 +1239,8 @@ P(X^{(j)}=a_{jl}|Y=c_k)=\frac {\underset{i=1}{\overset{N}{\sum}}I(x_i^{(j)}=a_{j
 $$
 等价于在随机变量各个取值的频数上赋予一个正数 <span class="arithmatex">\(\lambda \gt 0\)</span>。当 <span class="arithmatex">\(\lambda=0\)</span> 时就是极大似然估计。常取 <span class="arithmatex">\(\lambda=1\)</span>，这时称为拉普拉斯平滑。</p>
 <p>先验概率的贝叶斯估计是
-$$</p>
-<p>P_{\lambda}(Y=c_k)=\frac{\underset{i=1}{\overset{N}{\sum}}I(y_i=c_k)+\lambda}{N+K\lambda}
+$$
+P_{\lambda}(Y=c_k)=\frac{\underset{i=1}{\overset{N}{\sum}}I(y_i=c_k)+\lambda}{N+K\lambda}
 $$
 其中，<span class="arithmatex">\(S_j\)</span> 是 <span class="arithmatex">\(x^{(j)}\)</span> 取值个数，<span class="arithmatex">\(K\)</span> 是 <span class="arithmatex">\(Y\)</span> 类别数。</p>
 

@@ -1274,6 +1274,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MotionLatentDiffusion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MotionLatentDiffusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1730,10 +1751,8 @@
 <blockquote>
 <p><strong>VAE</strong></p>
 <p>通过使用前馈模型 (<span class="arithmatex">\(q_{\phi}(z|x)\)</span>) 近似难以处理的后验，主要优化目标是最小化该近似值与原始后验之间的 KL 散度。</p>
-<p>采用证据下界 ELBO 作为损失函数
-$$
-ELBO=\mathbb{E}<em>{z\sim q</em>{\phi}(z|x)}\log(p_{\theta}(x|z))-D_{KL}(q_{\phi}(z|x)||p_{\theta}(z))
-$$</p>
+<p>采用证据下界 ELBO 作为损失函数:</p>
+<p><span class="arithmatex">\(ELBO=\mathbb{E}_{z\sim q_{\phi}(z|x)}\log(p_{\theta}(x|z))-D_{KL}(q_{\phi} (z|x)||p_{\theta}(z))\)</span></p>
 <p><strong>NF</strong></p>
 <p>采用一系列可逆变换 <span class="arithmatex">\(\{f_i\}_{1:N}\)</span> 把简单的先验分布 <span class="arithmatex">\(p(z_0)\)</span> 映射到复杂的数据分布 <span class="arithmatex">\(p(x)\)</span></p>
 <p><strong>Motion Graph</strong></p>

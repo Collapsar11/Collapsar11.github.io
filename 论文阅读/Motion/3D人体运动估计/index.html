@@ -12,6 +12,8 @@
         <link rel="prev" href="../motion%E7%BB%BC%E8%BF%B0/">
       
       
+        <link rel="next" href="../MotionLatentDiffusion/">
+      
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
@@ -1209,6 +1211,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MotionLatentDiffusion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MotionLatentDiffusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1615,7 +1638,7 @@ $$
 <span class="arithmatex">\(S\)</span> 是当前批次的样本数，<span class="arithmatex">\(S_z\)</span> 是当前潜变量的维度，<span class="arithmatex">\(\beta\)</span> 是权重参数。</p>
 <p>一旦 VAE 被训练并收敛到理想的重建精度，解码器 <span class="arithmatex">\(D_{vae}\)</span> 就会被冻结，以供后续使用。</p>
 <p>推理过程中，给定一个 <span class="arithmatex">\(z \in R^{1 \times S_z}\)</span>，<span class="arithmatex">\(D_{vae}\)</span> 可以将其解码回人体运动序列：<span class="arithmatex">\(M_W \in R^{w\times 144}\)</span>。</p>
-<p><img src="3D Human Motion Estimation via Motion Compression and Refinement.assets/image-20240926200634351.png" alt="image-20240926200634351" style="zoom:67%;" /></p>
+<p><img alt="Motion VAE Architecture" src="../3D%20Human%20Motion%20Estimation%20via%20Motion%20Compression%20and%20Refinement.assets/image-20240926200634351.png" /></p>
 <h5 id="human-motion-data-augmentation">Human Motion Data augmentation</h5>
 <blockquote>
 <p>VAE 需要泛化到看不见的人体运动序列并实现高重建精度，以确保学习到的潜在空间确实可以作为综合的人体运动子空间。</p>
@@ -1645,12 +1668,10 @@ $$
 </li>
 </ul>
 <p>使用具有不同级别注释的视频（2D 关节位置、3D 关节位置、SMPL 参数），使用由 <span class="arithmatex">\(L_{2D}, L_{3D}, L_{SMPL}\)</span> 组成的损失进行训练：
-  $$
-  L_{meva}=L_{3D}+L_{2D}+L_{SMPL} \
-  L_{3D} = \overset{T}{\underset{t=1}{\sum}}||jp_t^{3d}-j\hat{p}^{3d}<em>t||_2 \
-  L</em>{2D} = \overset{T}{\underset{t=1}{\sum}}||jp_t^{2d}-j\hat{p}^{2d}<em>t||_2 \
-  L</em>{SMPL}=||\beta-\hat{\beta}||_2+\overset{T}{\underset{t=1}{\sum}}||\theta_t-\hat{\theta_t}||_2
-  $$</p>
+  $$ L_{meva}=L_{3D}+L_{2D}+L_{SMPL} $$</p>
+<p>$$ L_{3D} = \overset{T}{\underset{t=1}{\sum}}||jp_t^{3d}-j\hat{p}^{3d}_t||_2 $$</p>
+<p>$$ L_{2D} = \overset{T}{\underset{t=1}{\sum}}||jp_t^{2d}-j\hat{p}^{2d}_t||_2 $$</p>
+<p>$$ L_{SMPL}=||\beta-\hat{\beta}||_2+\overset{T}{\underset{t=1}{\sum}}||\theta_t-\hat{\theta_t}||_2 $$</p>
 <h3 id="experiments">Experiments</h3>
 <h4 id="dataset">Dataset</h4>
 <ul>
