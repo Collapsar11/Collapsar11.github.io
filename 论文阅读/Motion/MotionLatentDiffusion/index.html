@@ -12,6 +12,8 @@
         <link rel="prev" href="../3D%E4%BA%BA%E4%BD%93%E8%BF%90%E5%8A%A8%E4%BC%B0%E8%AE%A1/">
       
       
+        <link rel="next" href="../T2M-GPT/">
+      
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
@@ -1333,6 +1335,128 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
+      模型结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件设置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      训练细节
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparisons-on-text-to-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparisons on Text-to-motion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparisons on Text-to-motion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      研究方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      评估方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparisons-on-action-to-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparisons on Action-to-motion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparisons on Action-to-motion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      评估方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据集
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparisons-on-unconditional-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparisons on Unconditional Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparisons on Unconditional Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      实现细节
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
       评价指标
     </span>
   </a>
@@ -1373,11 +1497,6 @@
       Time costs
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1442,6 +1561,72 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Appendix
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      两种在去噪过程中的预测方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="两种在去噪过程中的预测方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z_0" class="md-nav__link">
+    <span class="md-ellipsis">
+      直接预测去噪后的潜在向量 \(z_0\)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epsilon" class="md-nav__link">
+    <span class="md-ellipsis">
+      预测噪声 \(\epsilon\)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motion-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion Representation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#details-on-motion-latent-diffusion-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Details on Motion Latent Diffusion Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1451,6 +1636,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../T2M-GPT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    T2M-GPT
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1777,6 +1983,128 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
+      模型结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件设置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      训练细节
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparisons-on-text-to-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparisons on Text-to-motion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparisons on Text-to-motion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      研究方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      评估方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparisons-on-action-to-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparisons on Action-to-motion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparisons on Action-to-motion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      评估方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据集
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparisons-on-unconditional-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparisons on Unconditional Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparisons on Unconditional Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      实现细节
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
       评价指标
     </span>
   </a>
@@ -1817,11 +2145,6 @@
       Time costs
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1883,6 +2206,72 @@
       Discussion
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Appendix
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      两种在去噪过程中的预测方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="两种在去噪过程中的预测方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#z_0" class="md-nav__link">
+    <span class="md-ellipsis">
+      直接预测去噪后的潜在向量 \(z_0\)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epsilon" class="md-nav__link">
+    <span class="md-ellipsis">
+      预测噪声 \(\epsilon\)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motion-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion Representation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#details-on-motion-latent-diffusion-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Details on Motion Latent Diffusion Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2108,8 +2497,73 @@
 <li>UESTC</li>
 </ul>
 <h4 id="implementation-details">Implementation Details</h4>
-<p>TODO</p>
-<h5 id="_11">评价指标</h5>
+<h5 id="_11">模型结构</h5>
+<ul>
+<li>VAE 模型中的运动变换编码器和解码器都由 9 层和 4 个头组成，默认使用 skip 连接</li>
+<li>使用了 transformer-based 去噪器</li>
+<li>条件嵌入和潜在变量 <span class="arithmatex">\(z\)</span> 分别是 1256 维和 1024 维的向量</li>
+</ul>
+<h5 id="_12">条件设置</h5>
+<ul>
+<li>使用冻结的 <span class="arithmatex">\(CLIP VIT-L/14\)</span> 模型作为文本编码器</li>
+<li>对动作条件使用可学习的嵌入</li>
+</ul>
+<h5 id="_13">训练细节</h5>
+<ul>
+<li>使用 <span class="arithmatex">\(AdamW\)</span> 优化器，学习率固定为 <span class="arithmatex">\(10^{-4}\)</span></li>
+<li><span class="arithmatex">\(VAE\)</span> 阶段的 mini-batch 大小为 128，扩散训练阶段为 64</li>
+<li><span class="arithmatex">\(VAE\)</span> 阶段训练 6K 轮，扩散阶段训练 3K 轮</li>
+<li>训练时使用 1K 步扩散，推理时使用 50 步</li>
+<li>方差 <span class="arithmatex">\(\beta_t\)</span> 从 <span class="arithmatex">\(8.5\times 10^{-4}\)</span> 线性缩放到 <span class="arithmatex">\(0.012\)</span></li>
+</ul>
+<blockquote>
+<p>什么叫方差 <span class="arithmatex">\(\beta_t\)</span> 线性缩放？</p>
+<p>如果用 <span class="arithmatex">\(x_t\)</span> 表示 <span class="arithmatex">\(t\)</span> 时刻的数据，下一时刻的数据可以表示为 <span class="arithmatex">\(x_{t+1}=\sqrt{1-\beta_t}\times x_t + \sqrt{\beta_t}\times \epsilon\)</span>，其中 <span class="arithmatex">\(\epsilon\)</span> 是从 <span class="arithmatex">\(N(0,1)\)</span> 中采样的噪声。</p>
+<p>方差：</p>
+<ul>
+<li>在 <span class="arithmatex">\(\sqrt{\beta_t}\times \epsilon\)</span> 这一项中， <span class="arithmatex">\(\beta_t\)</span> 起到了缩放噪声的作用</li>
+<li>由于 <span class="arithmatex">\(\epsilon\)</span> 的方差为 1，乘以 <span class="arithmatex">\(\sqrt{\beta_t}\times \epsilon\)</span> 之后，新噪声项的方差就变成了 <span class="arithmatex">\(\beta_t\)</span></li>
+</ul>
+<p>线性缩放：</p>
+<ul>
+<li>扩散过程的开始，添加的噪声很小</li>
+<li>随着扩散步骤的进行，噪声量逐渐增加</li>
+<li>到扩散过程结束时，噪声量达到最大</li>
+</ul>
+</blockquote>
+<h4 id="comparisons-on-text-to-motion">Comparisons on Text-to-motion</h4>
+<h5 id="_14">研究方法</h5>
+<ul>
+<li>引入了基于文本输入的运动潜在扩散模型，开拓了条件运动生成的探索</li>
+<li>训练了一个 <span class="arithmatex">\(25M\)</span> 参数的 <span class="arithmatex">\(MLD-1\)</span> 模型，以语言提示为条件</li>
+<li>使用冻结的 <span class="arithmatex">\(CLIP\)</span> 模型来编码文本到 <span class="arithmatex">\(1256\)</span> 维的投影池化输出</li>
+</ul>
+<h5 id="_15">评估方法</h5>
+<ul>
+<li>使用 HumanML3D 和 KIT 数据集</li>
+<li>使用 95% 置信区间，运行 20 次</li>
+</ul>
+<h4 id="comparisons-on-action-to-motion">Comparisons on Action-to-motion</h4>
+<h5 id="_16">评估方法</h5>
+<ul>
+<li>进行 20 次评估</li>
+<li>报告训练集和测试集上的 <span class="arithmatex">\(FID\)</span> 分数</li>
+</ul>
+<h5 id="_17">数据集</h5>
+<ul>
+<li>UESTC</li>
+<li>HumanAct12</li>
+</ul>
+<h4 id="comparisons-on-unconditional-generation">Comparisons on Unconditional Generation</h4>
+<h5 id="_18">实现细节</h5>
+<ul>
+<li>使用 ACTOR 的 transformer VAE 模型</li>
+<li>参考 TEMOS 方法使其类别无关</li>
+<li>设置 6 个头/层用于 transformer</li>
+<li>学习率 <span class="arithmatex">\(10^{-4}\)</span></li>
+<li>为适应 VPoser-t 的时间任务，将输入修改为固定长度的动作</li>
+</ul>
+<h4 id="_19">评价指标</h4>
 <h6 id="motion-quality">Motion quality</h6>
 <ul>
 <li>FID，Frechet Inception Distance</li>
@@ -2153,6 +2607,29 @@
 <li>可以生成任意长度的结果，但仍然低于数据集中的最大长度</li>
 <li>MLD 关注的是关节型的人体，但没涉及面部运动、手部运动和动物运动</li>
 </ul>
+<p><img src="MotionLatentDiffusion.assets/image-20241010164624336.png" alt="image-20241010164624336" style="zoom:25%;" /></p>
+<h3 id="appendix">Appendix</h3>
+<h4 id="_20">两种在去噪过程中的预测方法</h4>
+<h5 id="z_0">直接预测去噪后的潜在向量 <span class="arithmatex">\(z_0\)</span></h5>
+<ul>
+<li>
+<p>直接预测完全去噪后的结果</p>
+</li>
+<li>
+<p>模型直接从噪声数据中推断出原始的、无噪声的潜在表示</p>
+</li>
+</ul>
+<h5 id="epsilon">预测噪声 <span class="arithmatex">\(\epsilon\)</span></h5>
+<ul>
+<li>
+<p>预测添加到原始数据上的噪声</p>
+</li>
+<li>
+<p>模型学习识别和预测在扩散过程中添加的噪声，然后通过从噪声数据中减去预测的噪声来获得去噪结果</p>
+</li>
+</ul>
+<h4 id="motion-representation">Motion Representation</h4>
+<h4 id="details-on-motion-latent-diffusion-models">Details on Motion Latent Diffusion Models</h4>
 
 
 
