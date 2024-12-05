@@ -1557,7 +1557,8 @@
 <p>单纯的 VQ-VAE 训练存在码书 (codebook) 崩溃的问题，即只有少量码字被激活。可以采用停止梯度和一些损失来优化码本，指数移动平均 (exponential moving average, EMA) 用于码本更新，在训练过程中重置失活码 (Code Reset)。</p>
 <h3 id="method">Method</h3>
 <p>整体框架由 Motion VQ-VAE 和 T2M-GPT 两个模块组成。</p>
-<p><img src="T2M-GPT.assets/image-20241013171011443.png" alt="image-20241013171011443" style="zoom: 80%;" /></p>
+<!-- <img src="T2M-GPT.assets/image-20241013171011443.png" alt="image-20241013171011443" style="zoom: 80%;" /> -->
+<p><img alt="" src="../T2M-GPT.assets/image-20241013171011443.png" /></p>
 <p>Motion VQ-VAE：学习运动数据与离散代码序列之间的映射关系。</p>
 <p>T2M-GPT：根据文本描述生成代码索引，插入一个额外的可学习的 End 来指示生成的停止。</p>
 <p>推断过程中，先以自回归的方式生成代码索引，再通过 Motion VQ-VAE 中的解码器恢复运动。</p>
@@ -1641,7 +1642,8 @@ $$
 </ul>
 <h4 id="motion-representations">Motion representations</h4>
 <p>每个位姿用 <span class="arithmatex">\((\dot{r}^a,\dot{r}^x,\dot{r}^z,r^y,j^p,j^v,j^r,c^f)\)</span> 表示：</p>
-<p><img src="T2M-GPT.assets/image-20241013222645496.png" alt="image-20241013222645496" style="zoom:80%;" /></p>
+<p><!-- <img src="T2M-GPT.assets/image-20241013222645496.png" alt="image-20241013222645496" style="zoom:80%;" /> -->
+<img alt="" src="../T2M-GPT.assets/image-20241013222645496.png" /></p>
 <h4 id="limitations">Limitations</h4>
 <ul>
 <li>
